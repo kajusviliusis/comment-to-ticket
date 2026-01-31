@@ -1,8 +1,10 @@
 package org.example.pulsedesk.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.pulsedesk.client.HuggingFaceClient;
 import org.example.pulsedesk.model.Comment;
 import org.example.pulsedesk.repository.CommentRepository;
+import org.example.pulsedesk.repository.TicketRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,10 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentService {
     private final CommentRepository commentRepository;
+    private final TicketService ticketService;
 
     public Comment saveComment(Comment comment)
     {
-        return commentRepository.save(comment);
+        Comment saved = commentRepository.save(comment);
+
+        ticketService.createTicketIfNeeded(saved);
+
+        return saved;
     }
 
     public List<Comment> getAllComments()

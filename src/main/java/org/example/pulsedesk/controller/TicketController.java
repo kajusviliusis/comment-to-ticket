@@ -25,7 +25,7 @@ public class TicketController {
    @GetMapping("/{id}")
     public Ticket getTicketById(@PathVariable Long id)
    {
-       return ticketService.getTickedById(id);
+       return ticketService.getTicketById(id);
    }
 
 }
