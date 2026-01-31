@@ -18,8 +18,13 @@ public class CommentService {
     public Comment saveComment(Comment comment)
     {
         Comment saved = commentRepository.save(comment);
-
-        ticketService.createTicketIfNeeded(saved);
+        try
+        {
+            ticketService.createTicketIfNeeded(saved);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         return saved;
     }
