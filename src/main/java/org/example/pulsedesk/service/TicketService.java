@@ -3,7 +3,6 @@ package org.example.pulsedesk.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.example.pulsedesk.client.HuggingFaceClient;
 import org.example.pulsedesk.model.Comment;
 import org.example.pulsedesk.model.Ticket;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TicketService {
@@ -53,7 +51,6 @@ public class TicketService {
             String prompt = buildPrompt(comment.getText());
             String raw = huggingFaceClient.analyze(prompt);
             if (raw == null || raw.isBlank()) {
-                log.warn("Empty response from Hugging Face");
                 return;
             }
 
@@ -66,7 +63,6 @@ public class TicketService {
                     .asText();
 
             if (generated == null || generated.isBlank()) {
-                log.warn("Content empty: {}", raw);
                 return;
             }
 

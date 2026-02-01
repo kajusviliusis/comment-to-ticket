@@ -1,6 +1,5 @@
 package org.example.pulsedesk.client;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @Component
 public class HuggingFaceClient {
     @Value("${huggingface.api.key}")
@@ -22,8 +20,6 @@ public class HuggingFaceClient {
 
     public String analyze(String prompt)
     {
-        log.info("Calling Hugging Face model '{}' with prompt: {}", model, prompt);
-
         Map<String, Object> payload = Map.of(
                 "model", model,
                 "messages", List.of(
@@ -32,7 +28,7 @@ public class HuggingFaceClient {
                 "temperature", 0
         );
 
-        String response = webClient.post()
+        return webClient.post()
                 .uri("/v1/chat/completions")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + apiKey)
                 .header(HttpHeaders.CONTENT_TYPE, "application/json")
@@ -40,9 +36,6 @@ public class HuggingFaceClient {
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-
-        log.info("HF raw response: {}", response);
-        return response;
     }
 
 }
