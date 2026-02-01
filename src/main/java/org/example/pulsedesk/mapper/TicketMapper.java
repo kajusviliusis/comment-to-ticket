@@ -11,7 +11,8 @@ public class TicketMapper {
                 ticket.getCategory(),
                 ticket.getPriority(),
                 ticket.getShortSummary(),
-                ticket.getCreatedAt()
+                ticket.getCreatedAt(),
+                ticket.getComment() != null ? ticket.getComment().getId() : null
         );
     }
 }

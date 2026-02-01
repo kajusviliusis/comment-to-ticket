@@ -1,6 +1,7 @@
 package org.example.pulsedesk.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.pulsedesk.dto.CommentResponseDTO;
 import org.example.pulsedesk.dto.SubmitCommentDTO;
 import org.example.pulsedesk.mapper.CommentMapper;
 import org.example.pulsedesk.model.Comment;
@@ -16,13 +17,17 @@ public class CommentController{
     private final CommentService commentService;
 
     @PostMapping
-    public Comment createComment(@RequestBody SubmitCommentDTO dto){
-        return commentService.saveComment(CommentMapper.toEntity(dto));
+    public CommentResponseDTO createComment(@RequestBody SubmitCommentDTO dto){
+        Comment comment = commentService.saveComment(CommentMapper.toEntity(dto));
+        return CommentMapper.toDto(comment);
     }
 
     @GetMapping
-    public List<Comment> getAllComments()
+    public List<CommentResponseDTO> getAllComments()
     {
-        return commentService.getAllComments();
+        return commentService.getAllComments()
+                .stream()
+                .map(CommentMapper::toDto)
+                .toList();
     }
 }

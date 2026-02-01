@@ -8,5 +8,6 @@ public record TicketResponseDTO(
         String category,
         String priority,
         String shortSummary,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        Long commentId
 ) {}
