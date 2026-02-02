@@ -63,9 +63,9 @@ docker build -t pulsedesk .
 ```
 docker run -p 8080:8080 -e HUGGINGFACE_API_KEY=<your_key> pulsedesk
 ```
-- Application will start at:
+Application will start at:
 http://localhost:8080/
+
 
 Access Swagger at:
 http://localhost:8080/swagger-ui.html
-
