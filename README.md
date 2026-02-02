@@ -2,6 +2,10 @@
 
 a Web app that captures user comments and uses a Hugging Face model to determine whether a comment should become a support ticket.
 
+- Deployed at https://pulsedesk-app-43844cc36acf.herokuapp.com/
+
+![firefox_dBkULF7adS-ezgif com-resize(1)](https://github.com/user-attachments/assets/cfc3e9d3-30b4-4616-977a-0639f59a1d54)
+
 ## Technologies
 
 ### Backend
@@ -42,7 +46,7 @@ Backend will start at:
 http://localhost:8080/
 
 Run the Frontend
-```powershell
+```
 cd frontend
 npm install
 npm run dev
@@ -64,3 +68,4 @@ http://localhost:8080/
 
 Access Swagger at:
 http://localhost:8080/swagger-ui.html
+
