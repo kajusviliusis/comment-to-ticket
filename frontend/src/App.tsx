@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import CommentForm from './components/CommentForm';
+import CommentList from './components/CommentList';
+import TicketList from './components/TicketList';
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <div className="min-h-screen bg-white text-gray-900">
+            <header className="border-b border-gray-200">
+                <div className="mx-auto max-w-4xl px-4 py-3">
+                    <h1 className="text-lg font-semibold">PulseDesk</h1>
+                </div>
+            </header>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+            <main className="mx-auto max-w-4xl px-4 py-4 grid gap-6">
+                <section>
+                    <h2 className="text-base font-medium mb-2">Submit Comment</h2>
+                    <CommentForm />
+                </section>
+
+                <section>
+                    <h2 className="text-base font-medium mb-2">Comments</h2>
+                    <CommentList />
+                </section>
+
+                <section>
+                    <h2 className="text-base font-medium mb-2">Tickets</h2>
+                    <TicketList />
+                </section>
+            </main>
+        </div>
+    );
 }
 
-export default App
+export default App;
