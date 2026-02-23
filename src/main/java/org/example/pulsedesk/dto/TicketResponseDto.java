@@ -2,7 +2,7 @@ package org.example.pulsedesk.dto;
 
 import java.time.LocalDateTime;
 
-public record TicketResponseDTO(
+public record TicketResponseDto(
         Long id,
         String title,
         String category,

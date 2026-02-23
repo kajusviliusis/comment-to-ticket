@@ -1,5 +1,5 @@
 package org.example.pulsedesk.dto;
 
-public record SubmitCommentDTO (
+public record SubmitCommentDto(
         String text
 ){}

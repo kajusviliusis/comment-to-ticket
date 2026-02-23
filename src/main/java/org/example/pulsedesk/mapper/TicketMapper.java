@@ -1,11 +1,11 @@
 package org.example.pulsedesk.mapper;
 
-import org.example.pulsedesk.dto.TicketResponseDTO;
+import org.example.pulsedesk.dto.TicketResponseDto;
 import org.example.pulsedesk.model.Ticket;
 
 public class TicketMapper {
-    public static TicketResponseDTO toDto(Ticket ticket) {
-        return new TicketResponseDTO(
+    public static TicketResponseDto toDto(Ticket ticket) {
+        return new TicketResponseDto(
                 ticket.getId(),
                 ticket.getTitle(),
                 ticket.getCategory(),

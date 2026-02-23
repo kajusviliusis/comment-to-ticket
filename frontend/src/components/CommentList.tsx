@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-interface CommentResponseDTO {
+interface CommentResponseDto {
   id: number | string;
   text: string;
   createdAt: string;
 }
 
 export default function CommentList() {
-  const [comments, setComments] = useState<CommentResponseDTO[]>([]);
+  const [comments, setComments] = useState<CommentResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
 
@@ -17,7 +17,7 @@ export default function CommentList() {
     try {
       const res = await fetch("/comments");
       if (!res.ok) throw new Error("Failed to fetch comments.");
-      const data: CommentResponseDTO = await res.json();
+      const data: CommentResponseDto = await res.json();
       setComments(Array.isArray(data) ? data : []);
     } catch (err: any) {
       setError(err?.message || "Error loading comments.");

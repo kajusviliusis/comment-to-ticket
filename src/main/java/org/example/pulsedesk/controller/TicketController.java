@@ -1,7 +1,7 @@
 package org.example.pulsedesk.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.pulsedesk.dto.TicketResponseDTO;
+import org.example.pulsedesk.dto.TicketResponseDto;
 import org.example.pulsedesk.mapper.TicketMapper;
 import org.example.pulsedesk.model.Ticket;
 import org.example.pulsedesk.service.TicketService;
@@ -19,14 +19,14 @@ public class TicketController {
    private final TicketService ticketService;
 
    @GetMapping
-    public List<TicketResponseDTO> getAllTickets()
+    public List<TicketResponseDto> getAllTickets()
    {
        List<Ticket> tickets = ticketService.getAllTickets();
        return tickets.stream().map(TicketMapper::toDto).toList();
    }
 
    @GetMapping("/{id}")
-    public TicketResponseDTO getTicketById(@PathVariable Long id)
+    public TicketResponseDto getTicketById(@PathVariable Long id)
    {
        Ticket ticket = ticketService.getTicketById(id);
        return TicketMapper.toDto(ticket);

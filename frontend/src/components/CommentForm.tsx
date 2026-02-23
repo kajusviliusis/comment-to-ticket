@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface SubmitCommentDTO {
+interface SubmitCommentDto {
   text: string;
 }
 
@@ -20,7 +20,7 @@ export default function CommentForm() {
     }
     setLoading(true);
     try {
-      const payload: SubmitCommentDTO = { text };
+      const payload: SubmitCommentDto = { text };
       const res = await fetch("/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

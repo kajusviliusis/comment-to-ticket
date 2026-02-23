@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface TicketResponseDTO {
+interface TicketResponseDto {
   id: number | string;
   title: string;
   category: string;
@@ -17,7 +17,7 @@ function priorityClasses(p?: string) {
 }
 
 export default function TicketList() {
-  const [tickets, setTickets] = useState<TicketResponseDTO[]>([]);
+  const [tickets, setTickets] = useState<TicketResponseDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
 
@@ -27,7 +27,7 @@ export default function TicketList() {
     try {
       const res = await fetch("/tickets");
       if (!res.ok) throw new Error("Failed to fetch tickets.");
-      const data: TicketResponseDTO = await res.json();
+      const data: TicketResponseDto = await res.json();
       setTickets(Array.isArray(data) ? data : []);
     } catch (err: any) {
       setError(err?.message || "Error loading tickets.");
